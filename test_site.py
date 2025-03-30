@@ -22,7 +22,7 @@ def test_open_s6(driver):
     
 def test_two_monitors(driver):
     driver.get('https://www.demoblaze.com/')
-    monitir_link = driver.find_element(By.CSS_SELECTOR, '[onclick="byCat('monitor')"]')
+    monitir_link = driver.find_element(By.CSS_SELECTOR, '''[onclick="byCat('monitor')"]''')
     monitir_link.click()
     time.sleep(2)
     monitors = driver.find_elements(By.CSS_SELECTOR,'.card')

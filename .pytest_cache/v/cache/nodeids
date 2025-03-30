@@ -1,0 +1,4 @@
+[
+  "test_site.py::test_open_s6",
+  "test_site.py::test_two_monitors"
+]
