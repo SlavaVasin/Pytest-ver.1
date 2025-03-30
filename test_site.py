@@ -1,6 +1,7 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 import pytest
+import time
 
 
 @pytest.fixture()
@@ -9,6 +10,7 @@ def driver():
     browser.maximize_window()
     browser.implicitly_wait(3)
     yield browser
+    browser.close()
 
 def test_open_s6(driver):
     driver.get('https://www.demoblaze.com/')
@@ -16,3 +18,12 @@ def test_open_s6(driver):
     galaxy_s6.click()
     title = driver.find_element(By.CSS_SELECTOR, 'h2')
     assert title.text == 'Samsung galaxy s6'
+    
+    
+def test_two_monitors(driver):
+    driver.get('https://www.demoblaze.com/')
+    monitir_link = driver.find_element(By.CSS_SELECTOR, '[onclick="byCat('monitor')"]')
+    monitir_link.click()
+    time.sleep(2)
+    monitors = driver.find_elements(By.CSS_SELECTOR,'.card')
+    assert len(monitors) == 2
