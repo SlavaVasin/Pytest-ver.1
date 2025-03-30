@@ -1,16 +1,6 @@
-from selenium import webdriver
 from selenium.webdriver.common.by import By
-import pytest
 import time
 
-
-@pytest.fixture()
-def driver():
-    browser = webdriver.Firefox()
-    browser.maximize_window()
-    browser.implicitly_wait(3)
-    yield browser
-    browser.close()
 
 def test_open_s6(driver):
     driver.get('https://www.demoblaze.com/')
